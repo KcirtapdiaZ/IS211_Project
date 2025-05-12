@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Welcome {{ session['username'] }}!</h2>
+    <p><a href="/logout">Logout</a></p>
+    <h3>Your Posts</h3>
+    <a href="/new_post">Create New Post</a>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <strong>{{ post.title }}</strong> - {{ post.date_posted }} <br>
+            <a href="/edit_post/{{ post.id }}">Edit</a> |
+            <a href="/delete_post/{{ post.id }}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
